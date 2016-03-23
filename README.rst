@@ -13,7 +13,7 @@ RemoteStats - Client
         :alt: Documentation Status
 
 
-RemoteStats makes possible to inspect realtime information about a mremote machine using a browser. This is the client to be installed in such machine.
+RemoteStats makes possible to inspect realtime information about a remote machine using a browser. This is the client to be installed in such machine.
 
 * Free software: ISC license
 * Documentation: https://remotestatsclient.readthedocs.org.
