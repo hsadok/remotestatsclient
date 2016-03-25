@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
 import psutil
-import uuid
 import requests
 
 
@@ -11,7 +10,7 @@ class Monitor(object):
         self.hostname = hostname
         self.interval = interval
         self.last_samples = []
-        self.id = type(self).__name__ + '_' + hostname #uuid.uuid1()
+        self.id = type(self).__name__ + '_' + hostname
         self._plot_registered = False
 
     @staticmethod
@@ -35,16 +34,14 @@ class Monitor(object):
         """Tries to send the last samples to the server."""
         if self.plot_registered:
             try:
-                print self.last_samples
-                r = requests.put(self.server, json={'id': self.id,
-                                                'measures': self.last_samples})
+                r = requests.put(self.server, json={
+                    'id': self.id, 'measures': self.last_samples})
             except requests.exceptions.RequestException:
                 return
             if r.status_code == 200:
                 self.last_samples = []
             elif r.status_code == 404:
                 self._plot_registered = False
-
 
     def _add_sample(self, value):
         current_time = int(time.time()*1000)
