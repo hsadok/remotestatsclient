@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+# import flake8 as flake8
+# import tox as tox
 
 try:
     from setuptools import setup
@@ -15,17 +16,23 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    # TODO: put package requirements here
+    'psutil',
+    'requests'
 ]
 
 test_requirements = [
-    # TODO: put package test requirements here
+    'flake8',
+    'tox',
+    'mock',
+    'coverage'
 ]
 
 setup(
     name='remotestatsclient',
     version='0.1.0',
-    description="RemoteStats makes possible to inspect realtime information about a mremote machine using a browser. This is the client to be installed in such machine.",
+    description="RemoteStats makes possible to inspect realtime information "
+                "about a remote machine using a browser. This is the client"
+                " to be installed in such machine.",
     long_description=readme + '\n\n' + history,
     author="Hugo Sadok",
     author_email='hugo@sadok.com.br',
@@ -35,6 +42,8 @@ setup(
     ],
     package_dir={'remotestatsclient':
                  'remotestatsclient'},
+    entry_points={'console_scripts':
+                      ['remotestatsclient=remotestatsclient.__main__:main']},
     include_package_data=True,
     install_requires=requirements,
     license="ISCL",
