@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 import unittest
 import requests
-import json
 from mock import MagicMock
 
-from monitor import Monitor
+from remotestatsclient.monitor import Monitor
 
 
 class TestMonitor(unittest.TestCase):
@@ -41,6 +40,14 @@ class SubMonitor(Monitor):
 
 
 class TestMonitorSubclass(unittest.TestCase):
+    @staticmethod
+    def _mock_requests_with_code(code):
+        requests.post = MagicMock()
+        requests.put = MagicMock()
+        return_mock = MagicMock()
+        return_mock.status_code = code
+        requests.put.return_value = return_mock
+
     def test_plot_registered_success(self):
         requests.post = MagicMock()
         self.assertTrue(SubMonitor().plot_registered)
@@ -50,14 +57,27 @@ class TestMonitorSubclass(unittest.TestCase):
             side_effect=requests.exceptions.ConnectionError)
         self.assertFalse(SubMonitor().plot_registered)
 
-    def test_flush(self):
-        requests.post = MagicMock()
-        requests.put = MagicMock()
+    def test_flush_200(self):
+        self._mock_requests_with_code(200)
         monitor = SubMonitor()
-        monitor.last_samples = [[1,2],[3,4]]
+        monitor.last_samples = [[1, 2], [3, 4]]
         monitor.flush()
-        self.assertEqual(requests.put.mock_calls[0][2]['json'], [[1,2],[3,4]])
+        self.assertEqual(requests.put.mock_calls[0][2]['json']['measures'],
+                         [[1, 2], [3, 4]])
+        self.assertEqual(requests.put.mock_calls[0][2]['json']['id'],
+                         'SubMonitor_computerA')
         self.assertEqual(monitor.last_samples, [])
+
+    def test_flush_404(self):
+        self._mock_requests_with_code(404)
+        monitor = SubMonitor()
+        monitor.last_samples = [[1, 2], [3, 4]]
+        monitor.flush()
+        self.assertEqual(requests.put.mock_calls[0][2]['json']['measures'],
+                         [[1, 2], [3, 4]])
+        self.assertEqual(requests.put.mock_calls[0][2]['json']['id'],
+                         'SubMonitor_computerA')
+        self.assertEqual(monitor.last_samples, [[1, 2], [3, 4]])
 
 if __name__ == '__main__':
     import sys
