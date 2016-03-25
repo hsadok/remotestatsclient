@@ -57,8 +57,7 @@ class Monitor(object):
                         'interval': self.interval*1000}
             try:
                 requests.post(self.server, json=req_json)
-            except requests.exceptions.RequestException as e:
-                print e
+            except requests.exceptions.RequestException:
                 return False
             else:
                 self._plot_registered = True
