@@ -6,7 +6,7 @@ Installation
 
 At the command line::
 
-    $ easy_install remotestatsclient
+    $ pip install remotestatsclient
 
 Or, if you have virtualenvwrapper installed::
 
