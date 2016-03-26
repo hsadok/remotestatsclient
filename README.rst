@@ -9,9 +9,8 @@ RemoteStats - Client
         :target: https://travis-ci.org/hugombarreto/remotestatsclient
 
 .. image:: https://readthedocs.org/projects/remotestatsclient/badge/?version=latest
-        :target: https://readthedocs.org/projects/remotestatsclient/?badge=latest
+        :target: http://remotestatsclient.readthedocs.org/en/latest/?badge=latest
         :alt: Documentation Status
-
 
 RemoteStats makes possible to inspect realtime information about a remote machine using a browser. This is the client to be installed in such machine.
 
