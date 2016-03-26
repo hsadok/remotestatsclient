@@ -34,6 +34,22 @@ use sudo)::
 
     pip install remotestatsclient
 
+
+Using
+-----
+
+After installing just run relacing with your server address (details about the
+server are available on the next section)::
+
+    remotestatsclient <http://server_address>
+
+There is a demo configured on Heroku, hopefully not so many people will find
+out, if you want to see your computer stats there run::
+
+    remotestatsclient https://remotestats.herokuapp.com
+
+Now go to https://remotestats.herokuapp.com to see it running.
+
 Server
 ------
 
