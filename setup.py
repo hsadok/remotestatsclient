@@ -29,7 +29,7 @@ test_requirements = [
 
 setup(
     name='remotestatsclient',
-    version='0.1.0',
+    version='1.0.3',
     description="RemoteStats makes possible to inspect realtime information "
                 "about a remote machine using a browser. This is the client"
                 " to be installed in such machine.",
