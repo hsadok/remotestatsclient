@@ -1,6 +1,6 @@
-===============================
+====================
 RemoteStats - Client
-===============================
+====================
 
 .. image:: https://img.shields.io/pypi/v/remotestatsclient.svg
         :target: https://pypi.python.org/pypi/remotestatsclient
@@ -21,12 +21,22 @@ RemoteStats makes possible to inspect realtime information about a remote machin
 Features
 --------
 
-* TODO
+* See real time information about many computers in a single interface
 
-Credits
----------
+* Easily extensible so that many metric may be added in the future
 
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+Install
+-------
+
+Asumming you have pip installed, you can install the client doing (may need to
+use sudo)::
+
+    pip install remotestatsclient
+
+Server
+------
+
+For information about the server, including how to install see RemoteStatsServer_
+
+.. _RemoteStatsServer: https://github.com/hugombarreto/remotestatsserver
