@@ -24,6 +24,8 @@ Features
 
 * Easily extensible so that many metric may be added in the future
 
+.. image:: example.png
+
 
 Install
 -------
