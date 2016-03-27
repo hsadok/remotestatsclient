@@ -49,7 +49,7 @@ out, if you want to see your computer stats there run::
 
     remotestatsclient https://remotestats.herokuapp.com
 
-Now go to https://remotestats.herokuapp.com to see it running.
+Now go to https://remotestats.herokuapp.com to see it running. If you opened the website before running the client you may need to refresh the page in order to get the new plots.
 
 Server
 ------
